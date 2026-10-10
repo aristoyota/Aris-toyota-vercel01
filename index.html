@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#d71920">
+  <meta name="description" content="Konsultasi pembelian mobil Toyota bersama Aris. Tanyakan promo, simulasi kredit, dan test drive melalui WhatsApp.">
+  <title>Aris Toyota | Konsultasi & Promo Mobil Toyota</title>
+  <style>
+    :root{--red:#d71920;--red-dark:#a90f16;--ink:#171717;--muted:#666;--paper:#fff;--bg:#f3f4f6;--line:#e5e7eb;--green:#16834a;--radius:18px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+    a{color:inherit;text-decoration:none}
+    button,input,select{font:inherit}
+    .wrap{width:min(1160px,calc(100% - 32px));margin:auto}
+    .topline{background:#151515;color:#fff;font-size:13px;padding:8px 0}
+    .topline .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    header{background:#fff;position:sticky;top:0;z-index:20;box-shadow:0 3px 18px #0000000a}
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;letter-spacing:-.7px}
+    .brand-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--red);color:#fff;font-weight:900;font-size:14px}
+    .brand small{display:block;font-size:10px;letter-spacing:2px;color:var(--muted);font-weight:700}
+    .navlinks{display:flex;align-items:center;gap:24px;font-size:14px;font-weight:650}
+    .navlinks a:hover{color:var(--red)}
+    .btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;border:0;border-radius:999px;padding:12px 19px;font-weight:800;cursor:pointer;transition:transform .15s,background .15s}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-red{background:var(--red);color:#fff}
+    .btn-red:hover{background:var(--red-dark)}
+    .btn-dark{background:#171717;color:#fff}
+    .btn-outline{background:#fff;color:var(--ink);border:1px solid var(--line)}
+    .hero{padding:28px 0 8px}
+    .hero-panel{position:relative;overflow:hidden;border-radius:26px;background:linear-gradient(115deg,#171717 0%,#303030 57%,#5b1014 100%);color:#fff;min-height:430px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center}
+    .hero-copy{padding:clamp(28px,5vw,64px);position:relative;z-index:2}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:#fff;background:#ffffff18;border:1px solid #ffffff30;padding:7px 12px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.6px}
+    h1{font-size:clamp(34px,5vw,58px);line-height:1.04;letter-spacing:-2px;margin:20px 0 16px}
+    h1 span{color:#ff5258}
+    .hero-copy p{color:#e5e5e5;max-width:500px;margin:0 0 24px}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .hero-visual{height:100%;min-height:300px;display:flex;align-items:center;justify-content:center;padding:22px;position:relative}
+    .hero-visual:before{content:"";position:absolute;width:320px;height:320px;border-radius:50%;background:#d719202e;filter:blur(2px)}
+    .hero-car{position:relative;width:100%;max-width:500px;filter:drop-shadow(0 28px 20px #0008);transform:translateX(-8px)}
+    .hero-note{font-size:12px;color:#ddd;margin-top:16px}
+    .section{padding:18px 0}
+    .panel{background:var(--paper);border:1px solid #ececec;border-radius:var(--radius);padding:clamp(20px,3vw,32px);box-shadow:0 6px 24px #11111105}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px}
+    .section-head h2{font-size:clamp(24px,3vw,32px);line-height:1.15;margin:0 0 7px;letter-spacing:-.8px}
+    .section-head p{margin:0;color:var(--muted);font-size:14px}
+    .tag{display:inline-block;border-radius:999px;background:#fff0f0;color:var(--red-dark);padding:6px 10px;font-size:11px;font-weight:850}
+    .cars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .car-card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column;min-width:0}
+    .car-art{height:170px;background:linear-gradient(140deg,#f7f7f7,#e7e7e7);display:grid;place-items:center;padding:12px}
+    .car-art svg{width:100%;max-width:300px;height:auto}
+    .car-body{padding:18px;display:flex;flex-direction:column;flex:1}
+    .car-body h3{margin:0 0 4px;font-size:20px}
+    .car-body p{margin:0;color:var(--muted);font-size:13px}
+    .price{font-size:17px;font-weight:900;margin:14px 0}
+    .price small{font-size:11px;color:var(--muted);font-weight:600}
+    .car-body .btn{width:100%;margin-top:auto}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .feature{border:1px solid var(--line);border-radius:15px;padding:18px}
+    .feature-icon{width:42px;height:42px;border-radius:12px;background:#fff0f0;color:var(--red);display:grid;place-items:center;font-size:20px;margin-bottom:12px}
+    .feature h3{font-size:16px;margin:0 0 5px}
+    .feature p{font-size:13px;color:var(--muted);margin:0}
+    .promo{background:linear-gradient(115deg,#d71920,#a70d14);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .promo h2{font-size:clamp(24px,3vw,34px);line-height:1.15;margin:0 0 8px}
+    .promo p{color:#ffe4e4;margin:0}
+    .promo .btn{background:#fff;color:#a90f16;white-space:nowrap}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .contact-card{border:1px solid var(--line);border-radius:16px;padding:22px}
+    .contact-card h3{margin:0 0 8px}
+    .contact-card p{color:var(--muted);font-size:14px;margin:0 0 16px}
+    .form{display:grid;gap:12px}
+    .form label{font-size:13px;font-weight:750}
+    .form input,.form select{width:100%;border:1px solid #d8d8d8;border-radius:10px;padding:12px;background:#fff;margin-top:5px}
+    .fineprint{font-size:11px;color:var(--muted);margin-top:10px}
+    footer{margin-top:22px;background:#171717;color:#fff;padding:30px 0}
+    .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+    footer p{color:#bdbdbd;font-size:12px;margin:5px 0}
+    .wa-float{position:fixed;right:18px;bottom:18px;z-index:30;background:#20b65a;color:#fff;border-radius:999px;padding:14px 18px;font-weight:900;box-shadow:0 8px 28px #0003;display:flex;align-items:center;gap:8px}
+    .wa-float:hover{background:#169748}
+    .mobile-menu{display:none}
+    @media(max-width:800px){
+      .navlinks{display:none}.mobile-menu{display:inline-flex}
+      .hero-panel{grid-template-columns:1fr}.hero-copy{padding-bottom:10px}.hero-visual{min-height:190px;padding:0 22px 24px}.hero-visual:before{width:230px;height:230px}
+      .hero-car{max-width:390px}
+      .cars{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;margin-right:-5px}
+      .car-card{flex:0 0 min(82%,290px);scroll-snap-align:start}
+      .features{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+      .feature{flex:0 0 78%;scroll-snap-align:start}
+      .contact-grid{grid-template-columns:1fr}
+      .promo{align-items:flex-start;flex-direction:column}
+      .section-head{align-items:flex-start;flex-direction:column}
+      .topline .wrap{font-size:11px}
+    }
+    @media(min-width:801px){.mobile-nav-open{display:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="topline"><div class="wrap"><span>Sales Consultant Toyota • Setiajaya Cibubur</span><span>Senin–Minggu · Konsultasi via WhatsApp</span></div></div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#" aria-label="Aris Toyota Beranda"><span class="brand-mark">AT</span><span>ARIS TOYOTA<small>SALES CONSULTANT</small></span></a>
+      <nav class="navlinks" aria-label="Navigasi utama"><a href="#mobil">Pilihan Mobil</a><a href="#layanan">Layanan</a><a href="#promo">Promo</a><a href="#kontak">Kontak</a></nav>
+      <a class="btn btn-red" href="https://wa.me/6281290134203?text=Halo%20Aris%2C%20saya%20ingin%20konsultasi%20mobil%20Toyota." target="_blank" rel="noopener">WhatsApp Aris ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="hero-panel">
+        <div class="hero-copy">
+          <span class="eyebrow">✦ TEMUKAN TOYOTA IMPIAN ANDA</span>
+          <h1>Perjalanan baru,<br><span>dimulai di sini.</span></h1>
+          <p>Konsultasikan pilihan mobil Toyota, promo, dan simulasi kredit bersama Aris. Dapatkan bantuan yang ramah dari awal hingga proses pembelian.</p>
+          <div class="hero-actions">
+            <a class="btn btn-red" href="#mobil">Jelajahi Mobil Toyota ↓</a>
+            <a class="btn btn-outline" href="https://wa.me/6281290134203?text=Halo%20Aris%2C%20saya%20ingin%20tanya%20promo%20Toyota." target="_blank" rel="noopener">Tanya Promo</a>
+          </div>
+          <div class="hero-note">Informasi harga, ketersediaan unit, dan promo dapat berubah. Konfirmasi langsung dengan sales.</div>
+        </div>
+        <div class="hero-visual" aria-label="Ilustrasi mobil Toyota bergaya sedan merah">
+          <svg class="hero-car" viewBox="0 0 600 300" role="img" aria-label="Ilustrasi mobil merah" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="carPaint" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ff565c"/><stop offset=".5" stop-color="#d71920"/><stop offset="1" stop-color="#8c0710"/></linearGradient><linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a9d4e9"/><stop offset="1" stop-color="#283c51"/></linearGradient></defs>
+            <ellipse cx="302" cy="238" rx="230" ry="24" fill="#000" opacity=".35"/>
+            <path d="M80 191 L103 151 Q117 137 158 129 L224 75 Q244 60 277 60 L373 65 Q401 67 425 95 L477 145 Q515 153 535 175 L548 206 L534 224 L71 224 L61 208 Z" fill="url(#carPaint)" stroke="#75070d" stroke-width="3"/>
+            <path d="M177 128 L237 80 Q247 72 273 72 L310 74 L310 128 Z" fill="url(#glass)" stroke="#7b1117" stroke-width="4"/>
+            <path d="M323 74 L370 78 Q389 81 407 103 L430 129 L323 129 Z" fill="url(#glass)" stroke="#7b1117" stroke-width="4"/>
+            <path d="M315 74 L315 130" stroke="#7b1117" stroke-width="5"/>
+            <path d="M104 159 L154 151 L142 172 L90 181 Z" fill="#fff3d8"/>
+            <path d="M471 155 L506 176 L484 183 L457 166 Z" fill="#ffebad"/>
+            <path d="M70 202 L128 201 L118 215 L74 215 Z" fill="#f2f2f2"/>
+            <path d="M483 202 L541 198 L537 214 L493 216 Z" fill="#fff"/>
+            <path d="M161 198 L420 198" stroke="#ffb1b4" stroke-width="3" opacity=".7"/>
+            <circle cx="168" cy="216" r="39" fill="#151515"/><circle cx="168" cy="216" r="24" fill="#aeb3b8"/><circle cx="168" cy="216" r="12" fill="#34383c"/>
+            <circle cx="451" cy="216" r="39" fill="#151515"/><circle cx="451" cy="216" r="24" fill="#aeb3b8"/><circle cx="451" cy="216" r="12" fill="#34383c"/>
+            <path d="M260 157 L348 157" stroke="#ff9ca0" stroke-width="3" stroke-linecap="round"/>
+            <path d="M292 179 L386 179" stroke="#8e0b11" stroke-width="2" opacity=".6"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section id="mobil" class="section wrap">
+      <div class="panel">
+        <div class="section-head"><div><span class="tag">PILIHAN POPULER</span><h2>Temukan Toyota untuk Anda</h2><p>Geser kartu di ponsel untuk melihat pilihan lainnya.</p></div><a class="btn btn-outline" href="#kontak">Minta Rekomendasi ↗</a></div>
+        <div class="cars">
+          <article class="car-card">
+            <div class="car-art"><svg viewBox="0 0 320 150" role="img" aria-label="Ilustrasi city car putih"><path d="M32 94 L48 68 Q55 60 81 57 L113 32 Q122 26 143 27 L197 30 Q217 32 232 53 L260 70 Q282 74 292 90 L295 111 L24 111 Z" fill="#fdfdfd" stroke="#9da3aa" stroke-width="3"/><path d="M91 57 L126 34 L155 35 L155 58 Z M165 35 L195 37 Q209 40 222 58 L165 58Z" fill="#8aa6b6"/><circle cx="80" cy="109" r="20" fill="#25282b"/><circle cx="80" cy="109" r="10" fill="#aab1b7"/><circle cx="243" cy="109" r="20" fill="#25282b"/><circle cx="243" cy="109" r="10" fill="#aab1b7"/></svg></div>
+            <div class="car-body"><h3>Agya</h3><p>Praktis untuk mobilitas harian</p><div class="price">Tanya harga <small>· sesuai tipe</small></div><a class="btn btn-red wa-car" data-car="Toyota Agya" href="#">Tanya Agya via WA</a></div>
+          </article>
+          <article class="car-card">
+            <div class="car-art"><svg viewBox="0 0 320 150" role="img" aria-label="Ilustrasi SUV merah"><path d="M28 91 L46 62 Q53 54 81 53 L109 30 Q119 25 145 26 L202 30 Q222 32 238 55 L265 66 Q285 72 295 91 L297 111 L23 111Z" fill="#d71920" stroke="#8c1016" stroke-width="3"/><path d="M93 53 L121 32 L156 32 L156 54 Z M166 33 L200 36 Q215 39 228 56 L166 54Z" fill="#8aa6b6"/><circle cx="80" cy="109" r="20" fill="#25282b"/><circle cx="80" cy="109" r="10" fill="#aab1b7"/><circle cx="245" cy="109" r="20" fill="#25282b"/><circle cx="245" cy="109" r="10" fill="#aab1b7"/></svg></div>
+            <div class="car-body"><h3>Raize</h3><p>SUV kompak bergaya modern</p><div class="price">Tanya harga <small>· sesuai tipe</small></div><a class="btn btn-red wa-car" data-car="Toyota Raize" href="#">Tanya Raize via WA</a></div>
+          </article>
+          <article class="car-card">
+            <div class="car-art"><svg viewBox="0 0 320 150" role="img" aria-label="Ilustrasi MPV abu-abu"><path d="M24 91 L40 68 Q48 58 74 57 L106 35 Q116 28 143 29 L213 33 Q231 35 245 57 L269 69 Q288 74 297 91 L298 111 L22 111Z" fill="#aeb5bc" stroke="#626a72" stroke-width="3"/><path d="M87 57 L117 36 L153 36 L153 58 Z M163 37 L210 39 Q226 42 237 58 L163 58Z" fill="#526675"/><circle cx="78" cy="109" r="20" fill="#25282b"/><circle cx="78" cy="109" r="10" fill="#aab1b7"/><circle cx="246" cy="109" r="20" fill="#25282b"/><circle cx="246" cy="109" r="10" fill="#aab1b7"/></svg></div>
+            <div class="car-body"><h3>Avanza</h3><p>Teman perjalanan keluarga</p><div class="price">Tanya harga <small>· sesuai tipe</small></div><a class="btn btn-red wa-car" data-car="Toyota Avanza" href="#">Tanya Avanza via WA</a></div>
+          </article>
+          <article class="car-card">
+            <div class="car-art"><svg viewBox="0 0 320 150" role="img" aria-label="Ilustrasi MPV hitam"><path d="M24 91 L40 66 Q48 58 74 57 L106 34 Q116 28 143 29 L213 33 Q231 35 245 57 L269 69 Q288 74 297 91 L298 111 L22 111Z" fill="#292d32" stroke="#101214" stroke-width="3"/><path d="M87 57 L117 36 L153 36 L153 58 Z M163 37 L210 39 Q226 42 237 58 L163 58Z" fill="#78909f"/><circle cx="78" cy="109" r="20" fill="#111"/><circle cx="78" cy="109" r="10" fill="#aab1b7"/><circle cx="246" cy="109" r="20" fill="#111"/><circle cx="246" cy="109" r="10" fill="#aab1b7"/></svg></div>
+            <div class="car-body"><h3>Kijang Innova Zenix</h3><p>Kenyamanan untuk perjalanan jauh</p><div class="price">Tanya harga <small>· sesuai tipe</small></div><a class="btn btn-red wa-car" data-car="Toyota Kijang Innova Zenix" href="#">Tanya Zenix via WA</a></div>
+          </article>
+          <article class="car-card">
+            <div class="car-art"><svg viewBox="0 0 320 150" role="img" aria-label="Ilustrasi SUV hitam"><path d="M27 91 L44 61 Q52 53 79 53 L109 30 Q119 25 145 26 L204 30 Q224 32 239 55 L265 67 Q285 72 295 91 L297 111 L23 111Z" fill="#24272b" stroke="#101214" stroke-width="3"/><path d="M92 53 L121 32 L156 32 L156 54 Z M166 33 L201 36 Q216 39 229 56 L166 54Z" fill="#78909f"/><circle cx="80" cy="109" r="20" fill="#111"/><circle cx="80" cy="109" r="10" fill="#aab1b7"/><circle cx="245" cy="109" r="20" fill="#111"/><circle cx="245" cy="109" r="10" fill="#aab1b7"/></svg></div>
+            <div class="car-body"><h3>Fortuner</h3><p>SUV tangguh dengan karakter kuat</p><div class="price">Tanya harga <small>· sesuai tipe</small></div><a class="btn btn-red wa-car" data-car="Toyota Fortuner" href="#">Tanya Fortuner via WA</a></div>
+          </article>
+          <article class="car-card">
+            <div class="car-art"><svg viewBox="0 0 320 150" role="img" aria-label="Ilustrasi sedan putih"><path d="M28 94 L51 72 Q66 62 93 59 L124 38 Q135 30 158 33 L203 39 Q222 43 239 66 L269 76 Q286 81 294 95 L294 111 L25 111Z" fill="#f5f5f5" stroke="#9da3aa" stroke-width="3"/><path d="M101 59 L130 39 L158 39 L166 61 Z M174 42 L201 45 Q218 48 229 67 L174 61Z" fill="#8aa6b6"/><circle cx="80" cy="109" r="20" fill="#25282b"/><circle cx="80" cy="109" r="10" fill="#aab1b7"/><circle cx="244" cy="109" r="20" fill="#25282b"/><circle cx="244" cy="109" r="10" fill="#aab1b7"/></svg></div>
+            <div class="car-body"><h3>Yaris Cross</h3><p>Gaya urban dengan pilihan hybrid</p><div class="price">Tanya harga <small>· sesuai tipe</small></div><a class="btn btn-red wa-car" data-car="Toyota Yaris Cross" href="#">Tanya Yaris Cross via WA</a></div>
+          </article>
+        </div>
+        <p class="fineprint">Ilustrasi kendaraan hanya sebagai visual contoh. Harga, tipe, spesifikasi, promo, dan ketersediaan unit wajib dikonfirmasi kepada sales.</p>
+      </div>
+    </section>
+
+    <section id="layanan" class="section wrap">
+      <div class="panel">
+        <div class="section-head"><div><span class="tag">LAYANAN ARIS</span><h2>Beli mobil jadi lebih mudah</h2><p>Temani proses memilih unit yang sesuai kebutuhan dan anggaran Anda.</p></div></div>
+        <div class="features">
+          <div class="feature"><div class="feature-icon">₿</div><h3>Simulasi Kredit</h3><p>Diskusikan estimasi DP dan cicilan sesuai pilihan mobil dan tenor.</p></div>
+          <div class="feature"><div class="feature-icon">✦</div><h3>Info Promo</h3><p>Tanyakan program yang sedang tersedia dan syarat yang berlaku.</p></div>
+          <div class="feature"><div class="feature-icon">✓</div><h3>Bantuan Pembelian</h3><p>Dapatkan panduan dari konsultasi awal hingga proses pemesanan.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="promo" class="section wrap">
+      <div class="panel promo">
+        <div><h2>Sedang cari promo Toyota?</h2><p>Tanyakan penawaran terbaru, simulasi kredit, atau jadwalkan test drive bersama Aris.</p></div>
+        <a class="btn" href="https://wa.me/6281290134203?text=Halo%20Aris%2C%20boleh%20minta%20info%20promo%20Toyota%20terbaru%3F" target="_blank" rel="noopener">Cek Promo via WhatsApp ↗</a>
+      </div>
+    </section>
+
+    <section id="kontak" class="section wrap">
+      <div class="panel">
+        <div class="section-head"><div><span class="tag">HUBUNGI KAMI</span><h2>Mulai konsultasi sekarang</h2><p>Isi formulir singkat, lalu pesan akan disiapkan untuk dikirim melalui WhatsApp.</p></div></div>
+        <div class="contact-grid">
+          <div class="contact-card"><h3>Aris — Sales Consultant Toyota</h3><p>Setiajaya Cibubur<br>WhatsApp: 0812 9013 4203</p><a class="btn btn-red" href="https://wa.me/6281290134203?text=Halo%20Aris%2C%20saya%20ingin%20konsultasi%20mobil%20Toyota." target="_blank" rel="noopener">Chat WhatsApp ↗</a><p class="fineprint">Website konsultasi independen. Bukan situs resmi Toyota Indonesia.</p></div>
+          <div class="contact-card">
+            <form class="form" id="leadForm">
+              <label>Nama Anda<input id="customerName" name="name" placeholder="Masukkan nama" required></label>
+              <label>Mobil yang diminati<select id="carChoice" name="car"><option>Toyota Agya</option><option>Toyota Raize</option><option>Toyota Avanza</option><option>Toyota Kijang Innova Zenix</option><option>Toyota Fortuner</option><option>Toyota Yaris Cross</option><option>Masih ingin konsultasi</option></select></label>
+              <label>Rencana pembelian<select id="plan" name="plan"><option>Kredit</option><option>Tunai</option><option>Masih membandingkan</option></select></label>
+              <button class="btn btn-red" type="submit">Kirim Detail ke WhatsApp ↗</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap foot"><div><a class="brand" href="#"><span class="brand-mark">AT</span><span>ARIS TOYOTA<small>SALES CONSULTANT</small></span></a><p>Informasi dan konsultasi pembelian mobil Toyota.</p></div><div><strong>Kontak</strong><p>0812 9013 4203 · Setiajaya Cibubur</p><p>© <span id="year"></span> Aris Toyota. Semua hak dilindungi.</p></div></div></footer>
+  <a class="wa-float" href="https://wa.me/6281290134203?text=Halo%20Aris%2C%20saya%20ingin%20tanya%20mobil%20Toyota." target="_blank" rel="noopener" aria-label="Chat Aris melalui WhatsApp">☏ WhatsApp</a>
+  <script>
+    const WA_NUMBER = "6281290134203";
+    const waUrl = (message) => "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(message);
+    document.querySelectorAll(".wa-car").forEach((link) => {
+      const car = link.dataset.car || "mobil Toyota";
+      link.href = waUrl("Halo Aris, saya ingin tanya informasi " + car + ", harga, dan promo yang tersedia.");
+      link.target = "_blank";
+      link.rel = "noopener";
+    });
+    document.getElementById("leadForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const name = document.getElementById("customerName").value.trim();
+      const car = document.getElementById("carChoice").value;
+      const plan = document.getElementById("plan").value;
+      const message = "Halo Aris, saya " + name + ". Saya tertarik dengan " + car + ". Rencana pembelian: " + plan + ". Mohon info harga, promo, dan langkah selanjutnya.";
+      window.open(waUrl(message), "_blank", "noopener");
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
